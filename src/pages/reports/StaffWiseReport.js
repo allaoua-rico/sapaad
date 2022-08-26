@@ -19,10 +19,11 @@ import MainH1 from "../../components/shared/wrappers/Reports/MainH1";
 import ReportToolbarLeftWrapper from "../../components/shared/wrappers/Reports/ReportToolbarLeftWrapper";
 import ReportToolbarRightWrapper from "../../components/shared/wrappers/Reports/ReportToolbarRightWrapper";
 import ReportMainWrapper from "../../components/shared/wrappers/Reports/ReportMainWrapper";
+import OneColTable from "../../components/shared/wrappers/OneColTable";
 import DropDownFilter from "../../components/shared/Select/DropDownFilter";
 import ReportToolbarWrapper from "../../components/shared/wrappers/Reports/ReportToolbarWrapper";
 
-export default function TopSellingItems() {
+export default function StaffWiseReport() {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);
@@ -85,21 +86,33 @@ export default function TopSellingItems() {
       <ReportToolbarWrapper>
         <ReportToolbarLeftWrapper>
           <ReturnLinkButton to="/dashboard/sales" />
-          <MainH1>Top Selling Items</MainH1>
+          <MainH1>Staff Wise Sales Report</MainH1>
         </ReportToolbarLeftWrapper>
         <ReportToolbarRightWrapper>
           <DropDownFilter
+            name="Role"
+            filters={[
+              { text: "Admin", value: "Admin" },
+              { text: "Captain", value: "Captain" },
+              { text: "Walter", value: "Walter" },
+              { text: "Cashier", value: "Cashier" },
+              { text: "Walter", value: "Walter" },
+              { text: "Service Station", value: "Service Station" },
+              { text: "Call Agent", value: "Call Agent" },
+              {
+                text: "Call Agent Superrvisor",
+                value: "Call Agent Superrvisor",
+              },
+              {
+                text: "Delivery Manager Station",
+                value: "Delivery Manager Station",
+              },
+              { text: "Delivery Boy", value: "Delivery Boy" },
+            ]}
+          />
+          <DropDownFilter
             name="Staff"
             filters={[{ text: "Jhon Vonn", value: "Jhon Vonn" }]}
-          />
-          <DropDownFilter name="Tag" filters={[]} />
-          <DropDownFilter
-            name="Category"
-            filters={[
-              { text: "Burgers", value: "Burgers" },
-              { text: "Pizzas", value: "Pizzas" },
-              { text: "Beverages", value: "Beverages" },
-            ]}
           />
           <ExportToCsv />
           <PrintLink />
@@ -168,9 +181,6 @@ export default function TopSellingItems() {
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
-              <div>
-                Total:
-              </div>
             </TableBody>
           </Table>
         </TableContainer>
@@ -183,6 +193,23 @@ export default function TopSellingItems() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        <div
+          className="
+         flex flex-col space-y-4 sm:space-y-0
+         sm:flex-row sm:space-x-6
+         justify-center items-center
+         "
+        >
+          <div className="sm:w-1/4 w-full">
+            <OneColTable label="Total Orders" value="0" />
+          </div>
+          <div className="sm:w-1/4 w-full">
+            <OneColTable label="Total No of Covers Served" value="0" />
+          </div>
+          <div className="sm:w-1/4 w-full">
+            <OneColTable label="Total Amount" value="SAR 0.00" />
+          </div>
+        </div>
       </MainPaper>
     </ReportMainWrapper>
   );
@@ -260,22 +287,34 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "Item",
+    id: "Date",
     numeric: false,
     disablePadding: true,
-    label: "Item",
+    label: "Date",
   },
   {
-    id: "TotalSold",
+    id: "Total_Orders",
     numeric: true,
     disablePadding: false,
-    label: "Total Sold",
+    label: "Total Orders",
   },
   {
-    id: "Total Amount",
+    id: "Total_Amount",
     numeric: true,
     disablePadding: false,
-    label: "Total Amount (SAR)",
+    label: "Total Amount (SAR)	",
+  },
+  {
+    id: "No_of_Cover_Served",
+    numeric: true,
+    disablePadding: false,
+    label: "No of Cover(s) Served",
+  },
+  {
+    id: "Avg_Sales/Cover",
+    numeric: true,
+    disablePadding: false,
+    label: "Avg Sales/Cover (SAR)",
   },
 ];
 
@@ -288,6 +327,7 @@ function EnhancedTableHead(props) {
     rowCount,
     onRequestSort,
   } = props;
+
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };

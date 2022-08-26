@@ -7,6 +7,7 @@ export default function DashBoardSalesTopSection({
   setFilterStartDate,
   setFilterEndDate,
 }) {
+
   return (
     <div className="bg-secondBg p-[10px] flex justify-between">
       <OrderTypesMenu />

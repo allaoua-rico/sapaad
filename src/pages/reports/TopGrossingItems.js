@@ -19,10 +19,12 @@ import MainH1 from "../../components/shared/wrappers/Reports/MainH1";
 import ReportToolbarLeftWrapper from "../../components/shared/wrappers/Reports/ReportToolbarLeftWrapper";
 import ReportToolbarRightWrapper from "../../components/shared/wrappers/Reports/ReportToolbarRightWrapper";
 import ReportMainWrapper from "../../components/shared/wrappers/Reports/ReportMainWrapper";
+import OneColTable from "../../components/shared/wrappers/OneColTable";
 import DropDownFilter from "../../components/shared/Select/DropDownFilter";
+import SearchInput from "../../components/shared/SearchInput";
 import ReportToolbarWrapper from "../../components/shared/wrappers/Reports/ReportToolbarWrapper";
 
-export default function TopSellingItems() {
+export default function TopGrossingItems() {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);
@@ -85,7 +87,7 @@ export default function TopSellingItems() {
       <ReportToolbarWrapper>
         <ReportToolbarLeftWrapper>
           <ReturnLinkButton to="/dashboard/sales" />
-          <MainH1>Top Selling Items</MainH1>
+          <MainH1>Top Grossing Items</MainH1>
         </ReportToolbarLeftWrapper>
         <ReportToolbarRightWrapper>
           <DropDownFilter
@@ -168,9 +170,6 @@ export default function TopSellingItems() {
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
-              <div>
-                Total:
-              </div>
             </TableBody>
           </Table>
         </TableContainer>
@@ -183,6 +182,20 @@ export default function TopSellingItems() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        <div
+          className="
+         flex flex-col space-y-4 sm:space-y-0
+         sm:flex-row sm:space-x-6
+         justify-center items-center
+         "
+        >
+          <div className="sm:w-1/4 w-full">
+            <OneColTable label="Total Orders" value="0" />
+          </div>
+          <div className="sm:w-1/4 w-full">
+            <OneColTable label="Total Amount" value="SAR 0.00" />
+          </div>
+        </div>
       </MainPaper>
     </ReportMainWrapper>
   );
@@ -260,22 +273,64 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "Item",
+    id: "Order",
     numeric: false,
     disablePadding: true,
-    label: "Item",
+    label: "Order",
   },
   {
-    id: "TotalSold",
+    id: "Time",
     numeric: true,
     disablePadding: false,
-    label: "Total Sold",
+    label: "Time",
   },
   {
-    id: "Total Amount",
+    id: "Type",
     numeric: true,
     disablePadding: false,
-    label: "Total Amount (SAR)",
+    label: "Type",
+  },
+  {
+    id: "By",
+    numeric: true,
+    disablePadding: false,
+    label: "By",
+  },
+  {
+    id: "Amount",
+    numeric: true,
+    disablePadding: false,
+    label: "Amount (SAR)",
+  },
+  {
+    id: "Payments",
+    numeric: true,
+    disablePadding: false,
+    label: "Payments (SAR)",
+  },
+  {
+    id: "Amount Received",
+    numeric: true,
+    disablePadding: false,
+    label: "Amount Received (SAR)",
+  },
+  {
+    id: "Received By",
+    numeric: true,
+    disablePadding: false,
+    label: "Received By",
+  },
+  {
+    id: "Amount Returned",
+    numeric: true,
+    disablePadding: false,
+    label: "Amount Returned (SAR)",
+  },
+  {
+    id: "Status",
+    numeric: true,
+    disablePadding: false,
+    label: "Status",
   },
 ];
 
@@ -288,6 +343,7 @@ function EnhancedTableHead(props) {
     rowCount,
     onRequestSort,
   } = props;
+
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };

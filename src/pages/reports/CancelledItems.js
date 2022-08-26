@@ -21,8 +21,9 @@ import ReportToolbarRightWrapper from "../../components/shared/wrappers/Reports/
 import ReportMainWrapper from "../../components/shared/wrappers/Reports/ReportMainWrapper";
 import DropDownFilter from "../../components/shared/Select/DropDownFilter";
 import ReportToolbarWrapper from "../../components/shared/wrappers/Reports/ReportToolbarWrapper";
+import OneColTable from "../../components/shared/wrappers/OneColTable";
 
-export default function TopSellingItems() {
+export default function CancelledItems() {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);
@@ -84,23 +85,10 @@ export default function TopSellingItems() {
     <ReportMainWrapper>
       <ReportToolbarWrapper>
         <ReportToolbarLeftWrapper>
-          <ReturnLinkButton to="/dashboard/sales" />
-          <MainH1>Top Selling Items</MainH1>
+          <ReturnLinkButton to="/dashboard/marketing" />
+          <MainH1>Cancelled/Modified Items Report</MainH1>
         </ReportToolbarLeftWrapper>
         <ReportToolbarRightWrapper>
-          <DropDownFilter
-            name="Staff"
-            filters={[{ text: "Jhon Vonn", value: "Jhon Vonn" }]}
-          />
-          <DropDownFilter name="Tag" filters={[]} />
-          <DropDownFilter
-            name="Category"
-            filters={[
-              { text: "Burgers", value: "Burgers" },
-              { text: "Pizzas", value: "Pizzas" },
-              { text: "Beverages", value: "Beverages" },
-            ]}
-          />
           <ExportToCsv />
           <PrintLink />
         </ReportToolbarRightWrapper>
@@ -168,9 +156,6 @@ export default function TopSellingItems() {
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
-              <div>
-                Total:
-              </div>
             </TableBody>
           </Table>
         </TableContainer>
@@ -183,6 +168,20 @@ export default function TopSellingItems() {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        <div
+          className="
+         flex flex-col space-y-4 sm:space-y-0
+         sm:flex-row sm:space-x-6
+         justify-center items-center
+         "
+        >
+          <div className="sm:w-1/4 w-full">
+            <OneColTable label="Total Cancelled Items" value="0" />
+          </div>
+          <div className="sm:w-1/4 w-full">
+            <OneColTable label="Total Amount" value="SAR 0.00" />
+          </div>
+        </div>
       </MainPaper>
     </ReportMainWrapper>
   );
@@ -260,22 +259,64 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "Item",
+    id: "Order",
     numeric: false,
     disablePadding: true,
-    label: "Item",
+    label: "Order",
   },
   {
-    id: "TotalSold",
+    id: "Order_Type",
     numeric: true,
     disablePadding: false,
-    label: "Total Sold",
+    label: "Order Type",
   },
   {
-    id: "Total Amount",
+    id: "Order Time",
     numeric: true,
     disablePadding: false,
-    label: "Total Amount (SAR)",
+    label: "Order_Time",
+  },
+  {
+    id: "By",
+    numeric: true,
+    disablePadding: false,
+    label: "By",
+  },
+  {
+    id: "Modified_Item",
+    numeric: true,
+    disablePadding: false,
+    label: "Modified Item",
+  },
+  {
+    id: "When",
+    numeric: true,
+    disablePadding: false,
+    label: "When",
+  },
+  {
+    id: "What",
+    numeric: true,
+    disablePadding: false,
+    label: "What",
+  },
+  {
+    id: "Who",
+    numeric: true,
+    disablePadding: false,
+    label: "Who",
+  },
+  {
+    id: "Modify_Reason",
+    numeric: true,
+    disablePadding: false,
+    label: "Modify Reason",
+  },
+  {
+    id: "Reduced_Amount",
+    numeric: true,
+    disablePadding: false,
+    label: "Reduced Amount (SAR)",
   },
 ];
 

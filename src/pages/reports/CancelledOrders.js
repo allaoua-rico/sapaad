@@ -20,6 +20,7 @@ import ReportToolbarLeftWrapper from "../../components/shared/wrappers/Reports/R
 import ReportToolbarRightWrapper from "../../components/shared/wrappers/Reports/ReportToolbarRightWrapper";
 import ReportMainWrapper from "../../components/shared/wrappers/Reports/ReportMainWrapper";
 import OneColTable from "../../components/shared/wrappers/OneColTable";
+import ReportToolbarWrapper from "../../components/shared/wrappers/Reports/ReportToolbarWrapper";
 
 export default function CancelledOrders() {
   const [order, setOrder] = React.useState("asc");
@@ -81,7 +82,7 @@ export default function CancelledOrders() {
 
   return (
     <ReportMainWrapper>
-      <div className="flex items-center justify-between">
+      <ReportToolbarWrapper>
         <ReportToolbarLeftWrapper>
           <ReturnLinkButton to="/dashboard/sales" />
           <MainH1>Cancelled Orders</MainH1>
@@ -90,7 +91,7 @@ export default function CancelledOrders() {
           <ExportToCsv />
           <PrintLink />
         </ReportToolbarRightWrapper>
-      </div>
+      </ReportToolbarWrapper>
       <MainPaper>
         <TableContainer>
           <Table sx={{ minWidth: 750 }} size={dense ? "small" : "medium"}>

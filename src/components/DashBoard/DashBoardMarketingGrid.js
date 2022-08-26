@@ -240,7 +240,7 @@ export default function DashBoardMarketingGrid() {
         </div>
         <div key="NumberOfCoversServed" className={className}>
           <DashboardGridItem
-            to="/reports/number_of_person_served_by_location"
+            to="/reports/number_of_person_served_by_location?type=nop"
             title="Number Of Covers Served"
             content={<NoDataYet />}
           />

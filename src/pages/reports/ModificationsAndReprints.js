@@ -28,6 +28,8 @@ import ReportToolbarRightWrapper from "../../components/shared/wrappers/Reports/
 import ReportMainWrapper from "../../components/shared/wrappers/Reports/ReportMainWrapper";
 import DropDownFilter from "../../components/shared/Select/DropDownFilter";
 import OneColTable from "../../components/shared/wrappers/OneColTable";
+import ReportToolbar from "../../components/shared/wrappers/Reports/ReportToolbarWrapper";
+import ReportToolbarWrapper from "../../components/shared/wrappers/Reports/ReportToolbarWrapper";
 
 export default function ModificationsAndReprints() {
   const [order, setOrder] = React.useState("asc");
@@ -89,7 +91,7 @@ export default function ModificationsAndReprints() {
 
   return (
     <ReportMainWrapper>
-      <div className="flex items-center justify-between">
+      <ReportToolbarWrapper>
         <ReportToolbarLeftWrapper>
           <ReturnLinkButton to="/dashboard/sales" />
           <MainH1>Modifications & Reprints</MainH1>
@@ -105,7 +107,7 @@ export default function ModificationsAndReprints() {
           <ExportToCsv />
           <PrintLink />
         </ReportToolbarRightWrapper>
-      </div>
+      </ReportToolbarWrapper>
       <MainPaper>
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>

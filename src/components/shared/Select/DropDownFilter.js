@@ -4,23 +4,29 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import SelectButton from "../buttons/SelectButton";
 import MenuButton from "../menu/MenuButton";
 
-export default function DropDownFilter({ name, filters }) {
+export default function DropDownFilter({
+  name,
+  filters,
+  hideAll,
+  defaultSelected,
+}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const [selectedFilter, setSelectedFilter] = useState("All");
+  const [selectedFilter, setSelectedFilter] = useState(
+    defaultSelected ? defaultSelected : "All"
+  );
   const onClose = () => setAnchorEl(false);
   const handleClickMenu = (event) => setAnchorEl(event.currentTarget);
-
+  const filtersArray = filters || [];
   return (
     <div>
       <SelectButton onClick={handleClickMenu}>
         {name}:{" "}
         {
-          [
-            filters ? { ...filters } : { ...[] },
-            { text: "All", value: "All" },
-          ].find(({ value }) => value == selectedFilter)?.text
+          [...filtersArray, !hideAll && { text: "All", value: "All" }].find(
+            ({ value }) => value == selectedFilter
+          )?.text
         }
         <IoMdArrowDropdown />
       </SelectButton>
@@ -43,13 +49,18 @@ export default function DropDownFilter({ name, filters }) {
           },
         }}
       >
-        <MenuButton
-          onClick={() => setSelectedFilter("All")}
-          onClose={onClose}
-          content="All"
-          width="w-36"
-        />
-        <Divider />
+        {!hideAll && (
+          <>
+            <MenuButton
+              onClick={() => setSelectedFilter("All")}
+              onClose={onClose}
+              content="All"
+              width="w-36"
+            />
+            <Divider />
+          </>
+        )}
+
         {React.Children.toArray(
           filters?.map((filter) => (
             <MenuButton

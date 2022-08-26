@@ -4,7 +4,7 @@ import { AiOutlinePrinter } from "react-icons/ai";
 
 export default function PrintLink() {
   return (
-    <Link to="" className="flex">
+    <Link to="" >
       <SelectButton>
         <AiOutlinePrinter />
       </SelectButton>

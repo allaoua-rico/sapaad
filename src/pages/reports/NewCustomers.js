@@ -19,10 +19,10 @@ import MainH1 from "../../components/shared/wrappers/Reports/MainH1";
 import ReportToolbarLeftWrapper from "../../components/shared/wrappers/Reports/ReportToolbarLeftWrapper";
 import ReportToolbarRightWrapper from "../../components/shared/wrappers/Reports/ReportToolbarRightWrapper";
 import ReportMainWrapper from "../../components/shared/wrappers/Reports/ReportMainWrapper";
-import DropDownFilter from "../../components/shared/Select/DropDownFilter";
 import ReportToolbarWrapper from "../../components/shared/wrappers/Reports/ReportToolbarWrapper";
+import SearchInput from "../../components/shared/SearchInput";
 
-export default function TopSellingItems() {
+export default function NewCustomers() {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);
@@ -84,23 +84,11 @@ export default function TopSellingItems() {
     <ReportMainWrapper>
       <ReportToolbarWrapper>
         <ReportToolbarLeftWrapper>
-          <ReturnLinkButton to="/dashboard/sales" />
-          <MainH1>Top Selling Items</MainH1>
+          <ReturnLinkButton to="/dashboard/marketing" />
+          <MainH1>New Customers</MainH1>
         </ReportToolbarLeftWrapper>
         <ReportToolbarRightWrapper>
-          <DropDownFilter
-            name="Staff"
-            filters={[{ text: "Jhon Vonn", value: "Jhon Vonn" }]}
-          />
-          <DropDownFilter name="Tag" filters={[]} />
-          <DropDownFilter
-            name="Category"
-            filters={[
-              { text: "Burgers", value: "Burgers" },
-              { text: "Pizzas", value: "Pizzas" },
-              { text: "Beverages", value: "Beverages" },
-            ]}
-          />
+          <SearchInput placeholder="Telephone" />
           <ExportToCsv />
           <PrintLink />
         </ReportToolbarRightWrapper>
@@ -168,9 +156,6 @@ export default function TopSellingItems() {
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
-              <div>
-                Total:
-              </div>
             </TableBody>
           </Table>
         </TableContainer>
@@ -260,22 +245,46 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "Item",
+    id: "Customer_Name",
     numeric: false,
     disablePadding: true,
-    label: "Item",
+    label: "Customer Name",
   },
   {
-    id: "TotalSold",
+    id: "Telephone",
     numeric: true,
     disablePadding: false,
-    label: "Total Sold",
+    label: "Telephone",
   },
   {
-    id: "Total Amount",
+    id: "Area",
     numeric: true,
     disablePadding: false,
-    label: "Total Amount (SAR)",
+    label: "Area",
+  },
+  {
+    id: "Building",
+    numeric: true,
+    disablePadding: false,
+    label: "Building",
+  },
+  {
+    id: "Branch",
+    numeric: true,
+    disablePadding: false,
+    label: "Branch",
+  },
+  {
+    id: "Created At",
+    numeric: true,
+    disablePadding: false,
+    label: "Created At",
+  },
+  {
+    id: "Created_By",
+    numeric: true,
+    disablePadding: false,
+    label: "Created By",
   },
 ];
 

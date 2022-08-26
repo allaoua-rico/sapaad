@@ -136,7 +136,7 @@ export default function DashBoardSalesGrid() {
         </div>
         <div key="OrdersByLocation" className={className}>
           <DashboardGridItem
-            to="/reports/top_sales?type=orders"
+            to="/reports/total_sales?type=orders"
             title="Orders By Location"
             content={<NoDataYet />}
           />
@@ -150,14 +150,14 @@ export default function DashBoardSalesGrid() {
         </div>
         <div key="TopGrossingItems" className={className}>
           <DashboardGridItem
-            to="reports/top_grossing_items?order_by=totalamount&sort_by=DESC"
+            to="/reports/top_grossing_items?order_by=totalamount&sort_by=DESC"
             title="Top Grossing Items"
             content={<NoDataYet />}
           />
         </div>
         <div key="StaffWiseReport" className={className}>
           <DashboardGridItem
-            to="reports/staff_wise_report"
+            to="/reports/staff_wise_report"
             title="Staff Wise Report"
             content={<NoDataYet />}
           />

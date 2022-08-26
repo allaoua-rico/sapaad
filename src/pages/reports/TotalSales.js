@@ -8,19 +8,22 @@ import MainH1 from "../../components/shared/wrappers/Reports/MainH1";
 import ReportMainWrapper from "../../components/shared/wrappers/Reports/ReportMainWrapper";
 import ReportToolbarLeftWrapper from "../../components/shared/wrappers/Reports/ReportToolbarLeftWrapper";
 import ReportToolbarRightWrapper from "../../components/shared/wrappers/Reports/ReportToolbarRightWrapper";
+import ReportToolbarWrapper from "../../components/shared/wrappers/Reports/ReportToolbarWrapper";
 
 export default function TotalSales() {
   let [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get("type"));
+  const type = searchParams.get("type");
 
   return (
     <ReportMainWrapper>
-      <div className="flex items-center justify-between">
+      <ReportToolbarWrapper>
         <ReportToolbarLeftWrapper>
           <ReturnLinkButton to="/dashboard/sales" />
           <MainH1>
-            {searchParams.get("type") == "sales"
+            {type == "sales"
               ? "Sales By Location"
+              : type == "orders"
+              ? "Orders  By Location"
               : "Total Sales"}
           </MainH1>
         </ReportToolbarLeftWrapper>
@@ -38,7 +41,7 @@ export default function TotalSales() {
           <ExportToCsv />
           <PrintLink />
         </ReportToolbarRightWrapper>
-      </div>
+      </ReportToolbarWrapper>
       <MainPaper>
         <div className="py-36 px-12">
           <div className="mx-auto flex flex-col items-center">

@@ -1,4 +1,4 @@
-export default function SelectButton({ children, onClick }) {
+export default function SelectButton({ children, onClick, disabled }) {
   return (
     <button
       onClick={onClick}
@@ -6,6 +6,7 @@ export default function SelectButton({ children, onClick }) {
       rounded flex items-center text-white bg-secondBg
       py-1 px-3
       "
+      disabled={disabled}
     >
       {children}
     </button>
