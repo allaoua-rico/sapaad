@@ -30,6 +30,8 @@ import NumberOfPersonServedByLocation from "./pages/reports/NumberOfPersonServed
 import TopPaidModifiers from "./pages/reports/TopPaidModifiers";
 import AreaWiseSalesReport from "./pages/reports/AreaWiseSalesReport";
 import BuildingWiseSalesReport from "./pages/reports/BuildingWiseSalesReport";
+import Setup from "./pages/Setup";
+import Walkin from "./pages/Walkin";
 
 function App() {
   return (
@@ -42,10 +44,10 @@ function App() {
       "
       >
         <HeaderLg />
-
         <div className="flex-1 relative flex flex-col">
           <Routes>
             <Route path="/" element={<Landing />} />
+            <Route path="/setup" element={<Setup />} />
             <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<DashBoardSalesGrid />} />
               <Route path="sales" element={<DashBoardSalesGrid />} />
@@ -96,6 +98,7 @@ function App() {
                 element={<BuildingWiseSalesReport />}
               />
             </Route>
+            <Route path="/walkin" element={<Walkin />} />
           </Routes>
         </div>
       </div>

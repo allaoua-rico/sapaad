@@ -5,7 +5,13 @@ export default function FilledButton(props) {
       type={type ? type : "submit"}
       onClick={onClick}
       disabled={disabled}
-      className="min-w-[130px] w-full font-semibold bg-mainBg text-black hover:text-thirdPrimary transition-all duration-150 rounded-md p-3"
+      className="min-w-[130px] w-full rounded-md p-3
+    text-black bg-mainBg 
+    hover:text-mainSecondary hover:bg-gray-200 
+      transition-all duration-150 
+      font-semibold
+      border border-gray-500
+      "
     >
       {text ? text : "Save"}
     </button>

@@ -35,7 +35,7 @@ export default function HeaderLg({ className }) {
         <HeaderLgNavLink to="/" text="Rickiees" />
         <div className="md:flex hidden">
           <HeaderLgNavLink to="/dashboard" text="Dashboard" />
-          <HeaderLgNavLink to="/walkin" text="Walk-In" />
+          <HeaderLgNavLink to="/walkin?_admin" text="Walk-In" />
           <WalkInMenuButton
             clicked={openWalkInMenu}
             handleClickWalkInMenu={handleClickWalkInMenu}

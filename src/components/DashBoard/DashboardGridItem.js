@@ -25,9 +25,9 @@ export default function DashboardGridItem({ title, to, content }) {
         <Link
           to={to}
           className="
-        absolute right-[1px] top-[1px]
-      bg-gray-400 
-        py-2 px-3
+          absolute right-[1px] top-[1px]
+        bg-gray-400 
+          py-2 px-3
         "
         >
           <BiLinkExternal className="text-white" />

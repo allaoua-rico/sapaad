@@ -3,7 +3,6 @@ import { Menu } from "@mui/material";
 import { ImCalendar } from "react-icons/im";
 import { IoMdArrowDropdown } from "react-icons/io";
 import PeriodMenuDateSelector from "./PeriodMenuDateSelector";
-import moment from "moment";
 import OutlinedButton from "../shared/buttons/OutlinedButton";
 import FilledButton from "../shared/buttons/FilledButton";
 

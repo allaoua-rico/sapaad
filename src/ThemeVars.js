@@ -4,9 +4,9 @@ const mainBg = "#f3f4f6";
 const secondBg = "#a8b1bb";
 
 exports.mainPrimary = mainPrimary;
+exports.mainSecondary = mainSecondary;
 exports.mainBg = mainBg;
 exports.secondBg = secondBg;
-exports.mainSecondary = mainSecondary;
 
 const HeaderLgHeight = "3rem";
 const StickyNavFooterHeight = "3rem";
