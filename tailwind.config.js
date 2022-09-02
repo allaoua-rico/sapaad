@@ -38,5 +38,6 @@ module.exports = {
   plugins: [
     require("tailwindcss")("./src/tailwind.config.js"),
     require("autoprefixer"),
+    require("tailwind-scrollbar-hide"),
   ],
 };

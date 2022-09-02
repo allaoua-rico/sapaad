@@ -37,7 +37,7 @@ export default function HourlyReport() {
         <ReportToolbarRightWrapper>
           <RadiosGroup
             name="by"
-            wrapperClass="flex items-center space-x-2"
+            wrapperClass="flex items-center space-x-2 bg-secondBg text-white py-1 px-3 rounded"
             setSelected={setOrderBy}
             selected={orderBy}
             radios={[
