@@ -11,6 +11,7 @@ export default function WalkinDialog({
   closeDialog,
   open,
 }) {
+  
   return (
     <>
       <Backdrop sx={{ color: "#fff", zIndex: 9996 }} open={open} />

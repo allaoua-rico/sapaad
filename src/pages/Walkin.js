@@ -1,7 +1,9 @@
 import { Backdrop } from "@mui/material";
+import _ from "lodash";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
+import ItemDialog from "../components/Walkin/ItemDialog";
 import PlaceOrdersDialog from "../components/Walkin/PlaceOrdersDialog";
 import WalkinDialog from "../components/Walkin/WalkinDialog";
 import WalkinMenuCategories from "../components/Walkin/WalkinMenuCategories";
@@ -54,8 +56,21 @@ export default function Walkin() {
   const [placeOrderOpen, setPlaceOrderOpen] = useState(false);
   const handleClickPlaceOrders = () => setPlaceOrderOpen(true);
 
+  const [list, setList] = useState([]);
+  const addToArray = (item) => setList([...list, { ...item, qty: 1 }]);
+  const removeFromArray = (index) =>
+    setList([...list].filter((item, item2) => item2 !== index));
+
+  const [openItem, setopenItem] = useState(false);
+  const [item, setItem] = useState(null);
+  const handleOpenItemDialog = (index) => {
+    setItem(list[index]);
+    setopenItem(true);
+  };
+  const handleOpenDiscount = () => topLeftRef.current?.openDiscountDialog();
+
   return (
-    <div className="p-4 flex flex-col h-full flex-1">
+    <div className="p-4 flex flex-col flex-1 h-full">
       <div className="grid grid-cols-4 gap-x-5">
         <WalkinTopLeft
           ref={topLeftRef}
@@ -74,7 +89,7 @@ export default function Walkin() {
           ref={placeOrderRef}
         >
           <FaCheck className="w-5 h-5" />
-          <span>Discounts</span>
+          <span>Place Order</span>
         </button>
       </div>
       <div className="flex space-x-5 py-3 flex-1">
@@ -83,14 +98,21 @@ export default function Walkin() {
           className={"flex-1 flex " + (activeDialogStep == 3 && disableBlur)}
           ref={searchSectionRef}
         >
-          <WalkinSearchSection step={activeDialogStep} ref={searchInputRef} />
+          <WalkinSearchSection
+            ref={searchInputRef}
+            list={list}
+            setList={setList}
+            step={activeDialogStep}
+            removeFromArray={removeFromArray}
+            handleOpenItemDialog={handleOpenItemDialog}
+          />
         </div>
         <div
           style={{ width: "50%" }}
           className={"flex-1 flex " + (activeDialogStep == 2 && disableBlur)}
           ref={menuCategoriesRef}
         >
-          <WalkinMenuCategories />
+          <WalkinMenuCategories addToArray={addToArray} />
           <Backdrop
             sx={{ zIndex: 9998 }}
             invisible
@@ -98,19 +120,31 @@ export default function Walkin() {
           />
         </div>
       </div>
-      <WalkinDialog
-        anchorEl={anchorEl}
-        step={activeDialogStep}
-        next={() =>
-          activeDialogStep < 7 && setActiveDialogStep(activeDialogStep + 1)
-        }
-        back={() =>
-          activeDialogStep > 1 && setActiveDialogStep(activeDialogStep - 1)
-        }
-        open={dialogOpen}
-        closeDialog={closeDialog}
-      />
-      <PlaceOrdersDialog open={placeOrderOpen} setOpen={setPlaceOrderOpen} />
+      <>
+        <WalkinDialog
+          anchorEl={anchorEl}
+          step={activeDialogStep}
+          next={() =>
+            activeDialogStep < 7 && setActiveDialogStep(activeDialogStep + 1)
+          }
+          back={() =>
+            activeDialogStep > 1 && setActiveDialogStep(activeDialogStep - 1)
+          }
+          open={dialogOpen}
+          closeDialog={closeDialog}
+        />
+        <PlaceOrdersDialog
+          list={list}
+          open={placeOrderOpen}
+          setOpen={setPlaceOrderOpen}
+        />
+        <ItemDialog
+          handleOpenDiscount={handleOpenDiscount}
+          open={openItem}
+          setOpen={setopenItem}
+          item={item}
+        />
+      </>
     </div>
   );
 }

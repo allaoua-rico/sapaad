@@ -1,6 +1,6 @@
 import { RiStickyNoteFill } from "react-icons/ri";
 import { MdOutlineAdd } from "react-icons/md";
-import { forwardRef, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import AddNotesMenu from "./AddNotesMenu";
 import DiscountsDialog from "./DiscountsDialog";
 
@@ -15,13 +15,18 @@ const WalkinTopLeft = forwardRef(({ className, step }, ref) => {
   const [discountOpen, setDiscountOpen] = useState(false);
   const handleClickDiscounts = () => setDiscountOpen(true);
 
+  useImperativeHandle(ref, () => ({
+    openDiscountDialog() {
+      handleClickDiscounts();
+    },
+  }));
   return (
     <div className={className}>
       <div
         className="bg-gray-200 p-2
         flex items-center justify-between
         rounded
-    "
+        "
       >
         <div>
           <div className="text-sm font-medium">New Order:</div>

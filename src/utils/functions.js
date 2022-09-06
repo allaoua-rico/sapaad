@@ -1,3 +1,5 @@
+import currency from "currency.js";
+
 export function displayFormikErrors(props) {
   return (
     <div>
@@ -50,6 +52,20 @@ export function displayFormikFieldErrors(props, field) {
         </div>
       );
     }
+    return <div>{component}</div>;
+  } else {
+    return null;
   }
-  return <div>{component}</div>;
 }
+
+export const RIAL = (value) =>
+  currency(value, {
+    symbol: "﷼",
+    decimal: ",",
+    separator: ".",
+    precision: 2,
+  }).format();
+
+export const billTotal = (list) => {
+  return list.reduce((total, { price }) => total + parseInt(price), 0);
+};

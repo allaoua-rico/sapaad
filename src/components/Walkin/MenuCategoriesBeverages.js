@@ -1,22 +1,22 @@
 import CategoryButton from "./CategoryButton";
 
-export default function MenuCategoriesBeverages() {
+export default function MenuCategoriesBeverages({ addToArray }) {
   return (
     <div>
       <CategoryButton
-        // onClick={() => setCat("burgers")}
+        onClick={() => addToArray({ name: "Bottled Water", price: "3.00" })}
         color="red"
       >
         Bottled Water
       </CategoryButton>
       <CategoryButton
-        //  onClick={() => setCat("pizzas")}
+        onClick={() => addToArray({ name: "Coke", price: "5.00" })}
         color="red"
       >
         Coke
       </CategoryButton>
       <CategoryButton
-        // onClick={() => setCat("beverages")}
+        onClick={() => addToArray({ name: "Pepsi", price: "5.00" })}
         color="red"
       >
         Pepsi

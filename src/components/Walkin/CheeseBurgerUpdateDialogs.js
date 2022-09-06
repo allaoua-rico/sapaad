@@ -11,7 +11,12 @@ import Transition from "../shared/utils/Transition";
 import { cheeseBurgerModifiers } from "../../data/walkinData";
 import { CheeseBurgerValidationSchema } from "../../utils/validation/ValidationSchema";
 
-export default function CheeseBurgerDialogs({ open, setOpen, addToArray }) {
+export default function CheeseBurgerUpdateDialogs({
+  open,
+  setOpen,
+  updateItem,
+  item,
+}) {
   const handleClose = () => setOpen(null);
   const [selected, setSelected] = useState(0);
   const rightSecRef = useRef();
@@ -20,6 +25,20 @@ export default function CheeseBurgerDialogs({ open, setOpen, addToArray }) {
   const [rSScrollTop, setRSScrollTop] = useState(null);
   const scrollBy = (px) => rightSecRef.current?.scrollBy(px);
   const scrollToEl = (px) => rightSecRef.current?.scrollToEl(px);
+
+  const initialValues = {};
+  cheeseBurgerModifiers.map((sec) => {
+    if (sec.maxChoices == 1)
+      return (initialValues[sec.name] = item.choices[sec.name].name);
+    const array = sec.choices.map((choice) => {
+      let found = false;
+      item.choices[sec.name].map((initialChoice) => {
+        if (choice.name == initialChoice.name) found = true;
+      });
+      return found;
+    });
+    initialValues[sec.name] = [...array];
+  });
 
   useEffect(() => {
     // handle first and last
@@ -47,9 +66,11 @@ export default function CheeseBurgerDialogs({ open, setOpen, addToArray }) {
         choices[sec.name] = sec.choices.filter((item, index) => section[index]);
       }
     });
-    addToArray({ name: "Cheese Burger", choices, price: 10 });
+    console.log(choices);
+    updateItem({ name: "Cheese Burger", choices, price: 10, editable: true });
     handleClose();
   };
+
   return (
     <Dialog
       sx={{
@@ -89,6 +110,7 @@ export default function CheeseBurgerDialogs({ open, setOpen, addToArray }) {
                   <div className="w-1/5 min-w-[170px] space-y-2 mx-4">
                     {cheeseBurgerModifiers.map((sec, index) => (
                       <LSButton
+                        type="button"
                         onClick={() => scrollToEl(elementsOffsetTops[index])}
                         selected={selected == index}
                         required={sec.required}
@@ -120,7 +142,7 @@ export default function CheeseBurgerDialogs({ open, setOpen, addToArray }) {
                   <FilledButton
                     type="button"
                     onClick={props.submitForm}
-                    text="Add Modifiers"
+                    text="Update Modifiers"
                   />
                 </div>
               </div>
@@ -131,12 +153,6 @@ export default function CheeseBurgerDialogs({ open, setOpen, addToArray }) {
     </Dialog>
   );
 }
-
-const initialValues = {};
-cheeseBurgerModifiers.map((sec) => {
-  if (sec.maxChoices == 1) return (initialValues[sec.name] = null);
-  initialValues[sec.name] = new Array(sec.choices.length).fill(false);
-});
 
 function LSButton({ children, selected, required, ...props }) {
   return (
