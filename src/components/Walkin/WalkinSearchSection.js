@@ -144,13 +144,15 @@ function QtyModifier({ qty, changeQty }) {
       >
         <FaMinus />
       </button>
-      <Input>
-        <NumPad.Number
-          onChange={(newValue) => changeQty(newValue)}
-          value={qty}
-          decimal={2}
-        />
-      </Input>
+      <div onClick={(e) => e.stopPropagation()}>
+        <Input>
+          <NumPad.Number
+            onChange={(newValue) => changeQty(newValue)}
+            value={qty}
+            decimal={2}
+          />
+        </Input>
+      </div>
       <button
         className="bg-gray-300
           w-8 h-6 
