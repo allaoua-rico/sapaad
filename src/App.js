@@ -32,6 +32,7 @@ import AreaWiseSalesReport from "./pages/reports/AreaWiseSalesReport";
 import BuildingWiseSalesReport from "./pages/reports/BuildingWiseSalesReport";
 import Setup from "./pages/Setup";
 import Walkin from "./pages/Walkin";
+import SetupPage from "./pages/SetupPage";
 
 function App() {
   return (
@@ -47,7 +48,7 @@ function App() {
         <div className="flex-1 relative flex flex-col">
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/setup" element={<Setup />} />
+            <Route path="/businessSetup" element={<Setup />} />
             <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<DashBoardSalesGrid />} />
               <Route path="sales" element={<DashBoardSalesGrid />} />
@@ -99,6 +100,7 @@ function App() {
               />
             </Route>
             <Route path="/walkin" element={<Walkin />} />
+            <Route path="/setup" element={<SetupPage />} />
           </Routes>
         </div>
       </div>

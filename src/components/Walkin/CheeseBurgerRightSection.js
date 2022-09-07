@@ -121,7 +121,7 @@ const CheeseBurgerRightSection = forwardRef(
                         <div>
                           <div>{choice.name}</div>
                           {choice.price && (
-                            <div className="text-xs text-blue-500">
+                            <div className="text-xs text-blue-500 whitespace-nowrap">
                               +{RIAL(choice.price)}
                             </div>
                           )}

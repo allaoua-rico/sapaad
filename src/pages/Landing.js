@@ -6,7 +6,7 @@ export default function Landing() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    pathname === "/" && navigate("/setup");
+    pathname === "/" && navigate("/businessSetup");
   }, [pathname]);
 
   return <div>Landing</div>;

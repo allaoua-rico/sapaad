@@ -14,7 +14,11 @@ import OutlinedButton from "../shared/buttons/OutlinedButton";
 import { TiDelete } from "react-icons/ti";
 
 export default function PlaceOrdersDialog({ open, setOpen, list }) {
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setSuccessDialog(false);
+    setPaymentError(false);
+  };
   const [paid, setPaid] = useState(formatToDecimals(billTotal(list)));
   useEffect(() => setPaid(formatToDecimals(billTotal(list))), [list]);
 
@@ -208,7 +212,7 @@ function PaidInput({ paid, setPaid }) {
           bg-white 
       `}
         >
-          <button>
+          <button type="button">
             <BiDialpad className="w-12 h-12 text-gray-500" />
           </button>
           <CurrencyInput

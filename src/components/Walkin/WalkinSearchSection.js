@@ -7,7 +7,7 @@ import tw from "twin.macro";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import CheeseBurgerTreeView from "./CheeseBurgerTreeView";
 import { useResizeDetector } from "react-resize-detector";
-import { billTotal, RIAL } from "../../utils/functions";
+import { billTotal, itemSubtotal, RIAL } from "../../utils/functions";
 
 const WalkinSearchSection = forwardRef((props, ref) => {
   const { height, ref: containerRef } = useResizeDetector();
@@ -76,11 +76,14 @@ const WalkinSearchSection = forwardRef((props, ref) => {
                     {item.price}
                   </td>
                   <td className="p-2 text-gray-500 font-semibold text-right">
-                    {item.price * item.qty}
+                    {itemSubtotal(item) * item.qty}
                   </td>
                   <td className="p-2 text-gray-500 font-semibold my-auto">
                     <button
-                      onClick={() => removeFromArray(index)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeFromArray(index);
+                      }}
                       className="flex items-center"
                     >
                       <RiDeleteBin6Line className="text-xl fill-red-500" />

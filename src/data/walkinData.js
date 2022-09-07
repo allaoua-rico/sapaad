@@ -14,7 +14,7 @@ export const cheeseBurgerModifiers = [
     choices: [
       { name: "Caramelized Onions", value: "Caramelized Onions" },
       { name: "Tomatos", value: "Tomatos" },
-      { name: "Lettuce", value: "Lettuce" },
+      { name: "Lettuce", value: "Lettuce", price: "1.00" },
     ],
     maxChoices: 3,
   },
