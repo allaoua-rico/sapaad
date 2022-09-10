@@ -32,7 +32,10 @@ import AreaWiseSalesReport from "./pages/reports/AreaWiseSalesReport";
 import BuildingWiseSalesReport from "./pages/reports/BuildingWiseSalesReport";
 import Setup from "./pages/Setup";
 import Walkin from "./pages/Walkin";
-import SetupPage from "./pages/SetupPage";
+import SetupPage from "./pages/SetupPage.js/SetupPage";
+import SetupLocations from "./pages/SetupPage.js/SetupLocations";
+import React from "react";
+import SetupLocationsEdit from "./pages/SetupPage.js/SetupLocationsEdit";
 
 function App() {
   return (
@@ -100,7 +103,16 @@ function App() {
               />
             </Route>
             <Route path="/walkin" element={<Walkin />} />
-            <Route path="/setup" element={<SetupPage />} />
+
+            <Route path="/setup" element={<SetupPage />}>
+              {/* <Route index element={<SetupPage />} /> */}
+              <Route path="setup_locations">
+                <Route index element={<SetupLocations />} />
+                <Route path=":locationId">
+                  <Route path="edit" element={<SetupLocationsEdit />} />
+                </Route>
+              </Route>
+            </Route>
           </Routes>
         </div>
       </div>
@@ -109,3 +121,20 @@ function App() {
 }
 
 export default App;
+
+{
+  /* 
+            {React.Children.toArray(
+              setupRoutes.map(({ path, Component }) => (
+                <Route
+                  exact
+                  path={path}
+                  element={
+                    <CrumpsResolver>
+                      <Component />
+                    </CrumpsResolver>
+                  }
+                />
+              ))
+            )} */
+}
