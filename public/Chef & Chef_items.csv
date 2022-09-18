@@ -1,0 +1,12 @@
+category_name,item_id,item_name,price,item_code,tags
+Beverages,1811286,Bottled Water,3.0,,""
+Burgers,1811269,Cheese Burger,10.0,,""
+Pizzas,1811281,Chicken Pizza,5.0,,""
+Beverages,1811287,Coke,5.0,,""
+Burgers,1811279,Grilled Beef Burger,15.0,,""
+Burgers,1811278,Grilled Chicken Burger,15.0,,""
+Pizzas,1811283,Margherita Large,2.0,,""
+Pizzas,1811285,Margherita Medium,2.0,,""
+Pizzas,1811284,Margherita XXl,2.0,,""
+Beverages,1811288,Pepsi,5.0,,""
+Pizzas,1811280,Veg Pizza,5.0,"",""

@@ -1,4 +1,3 @@
-import React from "react";
 import { useOutletContext } from "react-router-dom";
 import SetupLocationsGrid from "../../components/SetupPage/SetupLocationsGrid";
 import SetupTopSection from "../../components/SetupPage/SetupTopSection";
@@ -14,7 +13,7 @@ export default function SetupLocationsEdit() {
         leftSection={
           <ReportToolbarLeftWrapper>
             <ReturnLinkButton to={crumbs[crumbs.length - 2].path} />
-            <MainH1>Edit Location</MainH1>
+            <MainH1>Menu Management</MainH1>
           </ReportToolbarLeftWrapper>
         }
       />

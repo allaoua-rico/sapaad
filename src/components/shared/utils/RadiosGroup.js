@@ -8,12 +8,11 @@ export default function RadiosGroup({
   name,
 }) {
   const handleChange = (e) => setSelected(e.target.value);
-
   return (
     <div className={wrapperClass}>
       {React.Children.toArray(
         radios.map(({ text, value }) => (
-          <div className="space-x-2 group flex items-center ">
+          <div className="space-x-2 group flex items-center">
             <input
               className="group-hover:cursor-pointer"
               type="radio"
@@ -23,7 +22,10 @@ export default function RadiosGroup({
               onChange={handleChange}
               checked={value === selected}
             />
-            <label className="group-hover:cursor-pointer" for={value}>
+            <label
+              className="group-hover:cursor-pointer whitespace-nowrap"
+              for={value}
+            >
               {text}
             </label>
           </div>

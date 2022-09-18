@@ -1,0 +1,7 @@
+category_name,item_name,price,item_code,tags
+Beverages,Tea,2,BVT11,"drinks"
+Beverages,Coffee,2.50,BVC12,"drinks"
+Beverages,Lemon Juice,2.50,BVLM14,"drinks"
+Lunch Special,Veg Meals,10.00,VG15,"veg, rice"
+Lunch Special,Non Veg Meals,12.00,NVG13,"non veg, rice"
+Lunch Special,Lemon Rice,12.00,LR12,"veg, rice"

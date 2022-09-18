@@ -36,6 +36,15 @@ import SetupPage from "./pages/SetupPage.js/SetupPage";
 import SetupLocations from "./pages/SetupPage.js/SetupLocations";
 import React from "react";
 import SetupLocationsEdit from "./pages/SetupPage.js/SetupLocationsEdit";
+import SetupLocationsGeneralDetails from "./pages/SetupPage.js/SetupLocationsGeneralDetails";
+import SetupLocationsMenuManagement from "./pages/SetupPage.js/SetupLocationsMenuManagement";
+import SetupLocationsSurchargeAndDiscount from "./pages/SetupPage.js/SetupLocationsSurchargeAndDiscount";
+import SetupLocationsTaxRate from "./pages/SetupPage.js/SetupLocationsTaxRate";
+import SetupLocationsMenu from "./pages/SetupPage.js/SetupLocationsMenu";
+import SetupLocationsStaff from "./pages/SetupPage.js/SetupLocationsStaff";
+import SetupItems from "./pages/SetupPage.js/SetupItems";
+import ItemNewAndEdit from "./pages/SetupPage.js/ItemNewAndEdit";
+import ItemUpload from "./pages/SetupPage.js/ItemUpload";
 
 function App() {
   return (
@@ -48,7 +57,7 @@ function App() {
       "
       >
         <HeaderLg />
-        <div className="flex-1 relative flex flex-col">
+        <div className="flex-1 relative flex flex-col ">
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/businessSetup" element={<Setup />} />
@@ -103,14 +112,39 @@ function App() {
               />
             </Route>
             <Route path="/walkin" element={<Walkin />} />
-
             <Route path="/setup" element={<SetupPage />}>
-              {/* <Route index element={<SetupPage />} /> */}
               <Route path="setup_locations">
                 <Route index element={<SetupLocations />} />
                 <Route path=":locationId">
-                  <Route path="edit" element={<SetupLocationsEdit />} />
+                  <Route path="edit">
+                    <Route index element={<SetupLocationsEdit />} />
+                    <Route
+                      path="general_details"
+                      element={<SetupLocationsGeneralDetails />}
+                    />
+                    <Route path="pos_menu_management">
+                      <Route index element={<SetupLocationsMenuManagement />} />
+                      <Route
+                        path="surcharge_and_discount"
+                        element={<SetupLocationsSurchargeAndDiscount />}
+                      />
+                      <Route
+                        path="tax_rate"
+                        element={<SetupLocationsTaxRate />}
+                      />
+                      <Route path="menu" element={<SetupLocationsMenu />} />
+                    </Route>
+                    <Route path="staff" element={<SetupLocationsStaff />} />
+                  </Route>
                 </Route>
+              </Route>
+              <Route path="setup_items">
+                <Route index element={<SetupItems />} />
+                <Route path=":itemId">
+                  <Route path="edit" element={<ItemNewAndEdit />} />
+                  <Route path="upload" element={<ItemUpload />} />
+                </Route>
+                <Route path="new" element={<ItemNewAndEdit />} />
               </Route>
             </Route>
           </Routes>
@@ -121,20 +155,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* 
-            {React.Children.toArray(
-              setupRoutes.map(({ path, Component }) => (
-                <Route
-                  exact
-                  path={path}
-                  element={
-                    <CrumpsResolver>
-                      <Component />
-                    </CrumpsResolver>
-                  }
-                />
-              ))
-            )} */
-}

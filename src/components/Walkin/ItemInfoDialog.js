@@ -2,6 +2,7 @@ import { Dialog, Slide } from "@mui/material";
 import { forwardRef } from "react";
 import OutlinedButtonSm from "../shared/buttons/OutlinedButtonSm";
 import { IoCloseSharp } from "react-icons/io5";
+import Transition from "../shared/utils/Transition";
 
 export default function ItemInfoDialog({ open, setOpen, item }) {
   const handleClose = () => setOpen(null);
@@ -35,6 +36,4 @@ export default function ItemInfoDialog({ open, setOpen, item }) {
   );
 }
 
-const Transition = forwardRef(function Transition(props, ref) {
-  return <Slide direction="down" ref={ref} {...props} timeout={500} />;
-});
+

@@ -1,10 +1,5 @@
 import { Breadcrumbs } from "@mui/material";
-import {
-  Link,
-  Outlet,
-  useLocation,
-  useParams,
-} from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import SetupBusinessDetails from "../../components/SetupPage/SetupBusinessDetails";
 import SetupGrid from "../../components/SetupPage/SetupGrid";
 import { setupRoutes } from "../../data/routes";
@@ -25,9 +20,6 @@ export default function SetupPage() {
       ...rest,
     }))
     .filter(({ path }) => pathname.includes(path));
-  // console.log(crumbs);
-  // console.log(params.locationId);
-  // console.log(crumbs[crumbs.length - 2]);
 
   return (
     <>
@@ -68,10 +60,14 @@ export default function SetupPage() {
           </Breadcrumbs>
           <div
             className="flex flex-col items-center flex-1
-             bg-white px-3 py-5
+             bg-white px-3 py-5 
             "
           >
-            <div className="max-w-6xl w-full">
+            <div
+              className="max-w-6xl
+             flex flex-col
+             w-full flex-1"
+            >
               <Outlet context={[{ crumbs }]} />
             </div>
           </div>

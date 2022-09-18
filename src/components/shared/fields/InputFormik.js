@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { displayFormikFieldErrors } from "../../../utils/functions";
+import FieldWrapper from "../wrappers/FieldWrapper";
+import Input from "./Input";
 import InputLabel from "./InputLabel";
 
 export default function InputFormik({
@@ -10,43 +11,30 @@ export default function InputFormik({
   type,
   textarea,
   rows,
+  horizontal,
+  disabled,
+  inputClassName,
 }) {
-  const [focused, setFocused] = useState(false);
-  const onFocus = () => setFocused(true);
-  const onBlur = () => setFocused(false);
-
   const props = {
     value: formik.values[name],
     onChange: (e) => formik.setFieldValue(name, e.target.value),
     type: type ? type : "text",
-    onFocus: onFocus,
-    onBlur: onBlur,
-    className: "focus:outline-none w-full " + (focused ? "" : ""),
+    inputClassName: inputClassName,
     placeholder: placeholder,
+    disabled,
+    textarea,
+    rows,
+    horizontal,
   };
 
   return (
-    <div>
-      <InputLabel>{label}</InputLabel>
-      <div
-        className={
-          `flex items-center
-            my-auto py-2 px-3
-            border rounded
-            bg-white
-      ` + (focused ? "border-zinc-400" : "border-zinc-40")
-        }
-      >
-        {textarea ? (
-          <textarea
-            {...props}
-            rows={rows}
-            style={{ resize: "none" }}
-          ></textarea>
-        ) : (
-          <input {...props} />
-        )}
-      </div>
+    <div className="w-full">
+      <FieldWrapper horizontal={horizontal}>
+        <div className={horizontal && "w-1/3"}>
+          <InputLabel>{label}</InputLabel>
+        </div>
+        <Input {...props} />
+      </FieldWrapper>
       <div>{displayFormikFieldErrors(formik, name)}</div>
     </div>
   );

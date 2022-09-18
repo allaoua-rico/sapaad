@@ -5,7 +5,8 @@ export default function OutlinedButtonSm(props) {
       className="py-1 px-3
         border border-gray-300 rounded 
         text-xs font-bold
-      bg-gray-100
+      bg-mainBg hover:bg-white
+        transition-all duration-150 
     "
       onClick={onClick}
     >

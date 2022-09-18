@@ -25,7 +25,7 @@ export default function SetupGrid() {
           </LinkIcon>
           <GridLinkText>Location Setup</GridLinkText>
         </GridLink>
-        <GridLink to="/setup_locations">
+        <GridLink to="/setup/setup_items">
           <LinkIcon>
             <GiKnifeFork className="h-8 w-8" />
           </LinkIcon>

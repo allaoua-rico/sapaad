@@ -1,5 +1,6 @@
 import currency from "currency.js";
 import { isArray } from "lodash";
+import { formatValue } from "react-currency-input-field";
 
 export function displayFormikErrors(props) {
   return (
@@ -95,4 +96,14 @@ export const itemSubtotal = ({ price, choices }) => {
         : 0;
     });
   return parseInt(price) + addOns;
+};
+
+export const formatToDecimals = (value) => {
+  const value2 = formatValue({
+    value: value + "",
+    groupSeparator: ",",
+    decimalSeparator: ".",
+    decimalScale: 2,
+  });
+  return value2;
 };

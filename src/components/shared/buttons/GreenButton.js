@@ -1,6 +1,7 @@
 export default function GreenButton({ children, onClick }) {
   return (
     <button
+      type="button"
       className="bg-[#75ca75] text-sm text-white
       flex items-center
       py-1 px-3 rounded

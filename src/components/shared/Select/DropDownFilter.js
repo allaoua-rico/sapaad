@@ -22,7 +22,7 @@ export default function DropDownFilter({
   return (
     <div>
       <SelectButton onClick={handleClickMenu}>
-        {name}:{" "}
+        {typeof name === "string" ? `${name}:` : name}{" "}
         {
           [...filtersArray, !hideAll && { text: "All", value: "All" }].find(
             ({ value }) => value == selectedFilter

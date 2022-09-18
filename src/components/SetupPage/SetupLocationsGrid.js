@@ -18,43 +18,47 @@ export default function SetupLocationsGrid() {
     pt-8
     "
     >
-      <GridLink to={`/setup_locations/${locationId}/setup_locations`}>
+      <GridLink
+        to={`/setup/setup_locations/${locationId}/edit/general_details`}
+      >
         <LinkIcon>
           <FaBuilding className="h-8 w-8" />
         </LinkIcon>
         <GridLinkText>General Details</GridLinkText>
       </GridLink>
-      <GridLink to="/setup_locations">
+      <GridLink
+        to={`/setup/setup_locations/${locationId}/edit/pos_menu_management`}
+      >
         <LinkIcon>
           <IoSettingsSharp className="h-8 w-8" />
         </LinkIcon>
         <GridLinkText>Menu Management</GridLinkText>
       </GridLink>
-      <GridLink to="/setup_locations">
+      <GridLink to={`/setup/setup_locations/${locationId}/edit/staff`}>
         <LinkIcon>
           <BsPeopleFill className="h-8 w-8" />
         </LinkIcon>
         <GridLinkText>Staff</GridLinkText>
       </GridLink>
-      <GridLink to="/setup_locations">
+      <GridLink to={`/setup/setup_locations/${locationId}/edit/staff`}>
         <LinkIcon>
           <BsGrid3X3GapFill className="h-8 w-8" />
         </LinkIcon>
         <GridLinkText>Dining Sections</GridLinkText>
       </GridLink>
-      <GridLink to="/setup_locations">
+      <GridLink to={`/setup/setup_locations/${locationId}/edit/staff`}>
         <LinkIcon>
           <TiPuzzle className="h-8 w-8" />
         </LinkIcon>
         <GridLinkText>Printer & Peripheral Settings</GridLinkText>
       </GridLink>
-      <GridLink to="/setup_locations">
+      <GridLink to={`/setup/setup_locations/${locationId}/edit/staff`}>
         <LinkIcon>
           <IoLocationSharp className="h-8 w-8" />
         </LinkIcon>
         <GridLinkText>Delivery Settings</GridLinkText>
       </GridLink>
-      <GridLink to="/setup_locations">
+      <GridLink to={`/setup/setup_locations/${locationId}/edit/staff`}>
         <LinkIcon>
           <BsDisplay className="h-8 w-8" />
         </LinkIcon>

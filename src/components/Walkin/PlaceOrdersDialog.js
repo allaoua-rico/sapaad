@@ -1,13 +1,12 @@
 import { Dialog } from "@mui/material";
 import { MdErrorOutline } from "react-icons/md";
 import { BiDialpad } from "react-icons/bi";
-import { billTotal, RIAL } from "../../utils/functions";
+import { billTotal, formatToDecimals, RIAL } from "../../utils/functions";
 import FilledButton from "../shared/buttons/FilledButton";
 import Transition from "../shared/utils/Transition";
 import NumPad from "react-numpad";
 import { useEffect, useState } from "react";
 import CurrencyInput from "react-currency-input-field";
-import { formatValue } from "react-currency-input-field";
 import { Formik } from "formik";
 import MuiSelectFieldFormikValueLabel from "../shared/fields/MuiSelectFieldFormikValueLabel";
 import OutlinedButton from "../shared/buttons/OutlinedButton";
@@ -228,13 +227,3 @@ function PaidInput({ paid, setPaid }) {
     </NumPad.Number>
   );
 }
-
-const formatToDecimals = (value) => {
-  const value2 = formatValue({
-    value: value + "",
-    groupSeparator: ",",
-    decimalSeparator: ".",
-    decimalScale: 2,
-  });
-  return value2;
-};
