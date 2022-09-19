@@ -15,7 +15,7 @@ export default function FormikCheckboxWLabel({
         className={"group-hover:cursor-pointer " + inputClassName}
         onChange={onChange}
       />
-      <label className="group-hover:cursor-pointer" for={label}>
+      <label className="group-hover:cursor-pointer whitespace-nowrap" for={label}>
         {label}
       </label>
     </div>

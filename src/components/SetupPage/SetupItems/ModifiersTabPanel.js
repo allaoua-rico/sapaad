@@ -226,11 +226,11 @@ function GroupPopper() {
           <Fade {...TransitionProps} timeout={350}>
             <p
               className="max-w-[200px] bg-[#333333] text-white text-xs
-            p-2 rounded text-center"
+              p-2 rounded text-center"
             >
-              This group has got minimum and/or maximum conditions. To remove
+              {`This group has got minimum and/or maximum conditions. To remove
               this modifier from this group, visit setup > menu and edit the
-              item directly
+              item directly`}
             </p>
           </Fade>
         )}

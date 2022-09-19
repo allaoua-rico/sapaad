@@ -60,8 +60,7 @@ export default function SetupPage() {
           </Breadcrumbs>
           <div
             className="flex flex-col items-center flex-1
-             bg-white px-3 py-5 
-            "
+             bg-white px-3 py-5"
           >
             <div
               className="max-w-6xl

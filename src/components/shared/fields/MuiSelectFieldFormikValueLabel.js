@@ -49,7 +49,9 @@ export default function MuiSelectFieldFormikValueLabel(props) {
             "& .MuiSelect-root": { bgColor: "white" },
           }}
         >
-          <MenuItem value={defaultValue.value}>{defaultValue.text}</MenuItem>
+          {defaultValue && (
+            <MenuItem value={defaultValue.value}>{defaultValue.text}</MenuItem>
+          )}
           {React.Children.toArray(
             list?.map((el) => <MenuItem value={el.value}>{el.text}</MenuItem>)
           )}

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-export default function SearchInput({ placeholder, className }) {
+export default function SearchInput({
+  placeholder,
+  className,
+  value,
+  onChange,
+}) {
   const [focused, setFocused] = useState(false);
   const onFocus = () => setFocused(true);
   const onBlur = () => setFocused(false);
@@ -19,6 +24,8 @@ export default function SearchInput({ placeholder, className }) {
       }
     >
       <input
+        value={value}
+        onChange={onChange}
         type="text"
         onFocus={onFocus}
         onBlur={onBlur}

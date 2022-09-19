@@ -8,7 +8,7 @@ import MainH1 from "../../shared/wrappers/Reports/MainH1";
 import DropDownFilter from "../../shared/Select/DropDownFilter";
 import TH from "../../table/TH";
 import TBR from "../../table/TBR";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function MenuItemsTabPanel({ setOpenAdd }) {
@@ -40,21 +40,24 @@ export default function MenuItemsTabPanel({ setOpenAdd }) {
                 </tr>
               </thead>
               <tbody className="divide-y">
-                {list.map((item) => {
-                  const { name, description, price, img, active, group } = item;
-                  return (
-                    <>
-                      <TBR className={!active && "bg-[#fcf8e3]"}>
-                        <ProductInfoTd item={item} />
-                        <td>{price}</td>
-                        <td>
-                          <EditItem item={item} />
-                        </td>
-                      </TBR>
-                      {group && <GroupedItemCollapse item={item} />}
-                    </>
-                  );
-                })}
+                {React.Children.toArray(
+                  list.map((item) => {
+                    const { name, description, price, img, active, group } =
+                      item;
+                    return (
+                      <>
+                        <TBR className={!active && "bg-[#fcf8e3]"}>
+                          <ProductInfoTd item={item} />
+                          <td>{price}</td>
+                          <td>
+                            <EditItem item={item} />
+                          </td>
+                        </TBR>
+                        {group && <GroupedItemCollapse item={item} />}
+                      </>
+                    );
+                  })
+                )}
               </tbody>
             </table>
           </div>
@@ -197,7 +200,7 @@ function MenuRightSection() {
     >
       <div
         className="text-xs font-semibold text-gray-500
-          py-1 px-[15px] bg-gray-100"
+          py-1 px-[15px] bg-gray-100 border-b"
       >
         MENU CATEGORIES
       </div>

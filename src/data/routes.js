@@ -67,4 +67,9 @@ export const setupRoutes = [
     name: "New Menu Item",
     // Component: SetupLocationsSurchargeAndDiscount,
   },
+  {
+    path: "/setup/setup_staff",
+    name: "Staff",
+    // Component: SetupLocationsSurchargeAndDiscount,
+  },
 ];

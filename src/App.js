@@ -45,6 +45,7 @@ import SetupLocationsStaff from "./pages/SetupPage.js/SetupLocationsStaff";
 import SetupItems from "./pages/SetupPage.js/SetupItems";
 import ItemNewAndEdit from "./pages/SetupPage.js/ItemNewAndEdit";
 import ItemUpload from "./pages/SetupPage.js/ItemUpload";
+import SetupStaff from "./pages/SetupPage.js/SetupStaff/SetupStaff";
 
 function App() {
   return (
@@ -145,6 +146,14 @@ function App() {
                   <Route path="upload" element={<ItemUpload />} />
                 </Route>
                 <Route path="new" element={<ItemNewAndEdit />} />
+              </Route>
+              <Route path="setup_staff">
+                <Route index element={<SetupStaff />} />
+                {/* <Route path=":itemId">
+                  <Route path="edit" element={<ItemNewAndEdit />} />
+                  <Route path="upload" element={<ItemUpload />} />
+                </Route>
+                <Route path="new" element={<ItemNewAndEdit />} /> */}
               </Route>
             </Route>
           </Routes>

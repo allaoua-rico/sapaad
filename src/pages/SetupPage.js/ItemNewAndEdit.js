@@ -116,7 +116,7 @@ export default function ItemNewAndEdit() {
       </div>
       <div
         className="fixed bottom-0 p-[10px]
-        flex justify-between w-full
+        flex justify-between w-screen
         -mx-4 bg-[#f4f4f4]
         "
       >
@@ -347,14 +347,16 @@ function FoodSymbols({ props }) {
     <CustomAccordion title="Food Symbols">
       <div className="p-3 divide-y">
         <div className="grid grid-cols-3">
-          {array.map((item) => (
-            <FormikCheckboxWLabel
-              label={item}
-              name="foodSymbols"
-              value={item}
-              onChange={props.handleChange}
-            />
-          ))}
+          {React.Children.toArray(
+            array.map((item) => (
+              <FormikCheckboxWLabel
+                label={item}
+                name="admin"
+                value={item}
+                onChange={props.handleChange}
+              />
+            ))
+          )}
         </div>
       </div>
     </CustomAccordion>
@@ -938,6 +940,7 @@ function ImageUploader({ formik }) {
         multiple={false}
         type="file"
         hidden
+        accept="image/png, image/jpeg"
       />
       <div
         style={{ display: !displayFileError && "none" }}
