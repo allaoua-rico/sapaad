@@ -24,7 +24,7 @@ export default function Setup() {
   const formRef = useRef();
   return (
     <div>
-      <Dialog fullScreen={fullScreen} open={open} >
+      <Dialog fullScreen={fullScreen} open={open} onClose={handleClose}>
         <DialogContent sx={{ bgcolor: mainBg }}>
           <Formik
             innerRef={formRef}
