@@ -69,7 +69,7 @@ export const RIAL = (value) =>
   }).format();
 
 export const billTotal = (list) => {
-  return list.reduce((total, { price, choices }) => {
+  return list.reduce((total, { price, choices, qty }) => {
     let addOns = 0;
     choices &&
       Object.keys(choices)?.map((key) => {
@@ -80,7 +80,7 @@ export const billTotal = (list) => {
             )
           : 0;
       });
-    return total + parseInt(price) + addOns;
+    return total + parseInt(qty ? qty * price : price) + addOns;
   }, 0);
   // return list.reduce((total, { price }) => total + parseInt(price), 0);
 };

@@ -20,7 +20,7 @@ const WalkinSearchSection = forwardRef((props, ref) => {
     listCopy[index].qty = newValue;
     setList(listCopy);
   };
-  // console.log(list)
+  console.table(list);
   return (
     <div
       className="border border-gray-300
