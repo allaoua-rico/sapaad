@@ -71,14 +71,15 @@ export const RIAL = (value) =>
 export const billTotal = (list) => {
   return list.reduce((total, { price, choices }) => {
     let addOns = 0;
-    Object.keys(choices)?.map((key) => {
-      addOns += isArray(choices[key])
-        ? choices[key].reduce(
-            (total, { price }) => (price ? total + parseInt(price) : total),
-            0
-          )
-        : 0;
-    });
+    choices &&
+      Object.keys(choices)?.map((key) => {
+        addOns += isArray(choices[key])
+          ? choices[key].reduce(
+              (total, { price }) => (price ? total + parseInt(price) : total),
+              0
+            )
+          : 0;
+      });
     return total + parseInt(price) + addOns;
   }, 0);
   // return list.reduce((total, { price }) => total + parseInt(price), 0);

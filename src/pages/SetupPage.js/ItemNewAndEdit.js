@@ -115,32 +115,35 @@ export default function ItemNewAndEdit() {
         </button>
       </div>
       <div
-        className="fixed bottom-0 p-[10px]
-        flex justify-between w-screen
-        -mx-4 bg-[#f4f4f4]
+        className="fixed bottom-0 right-0 left-0
+        p-[10px]
+        flex justify-center w-screen
+        bg-[#f4f4f4]
         "
       >
-        <OutlinedButton>Cancel</OutlinedButton>
-        <div className="flex items-center space-x-2">
-          <OutlinedButton
-            text={
-              <div className="flex items-center space-x-1">
-                <HiOutlineDocumentDuplicate />
-                <span>Duplicate</span>
-              </div>
-            }
-          />
-          <FilledButton
-            className="bg-[#75ca75] hover:bg-green-600 
+        <div className="flex justify-between w-full max-w-2xl">
+          <OutlinedButton>Cancel</OutlinedButton>
+          <div className="flex items-center space-x-2">
+            <OutlinedButton
+              text={
+                <div className="flex items-center space-x-1">
+                  <HiOutlineDocumentDuplicate />
+                  <span>Duplicate</span>
+                </div>
+              }
+            />
+            <FilledButton
+              className="bg-[#75ca75] hover:bg-green-600 
              border-[#e9f2e9]
             "
-            text={
-              <div className="flex items-center space-x-1">
-                <HiOutlineDocumentDuplicate className="text-white" />
-                <span className="text-white">Update</span>
-              </div>
-            }
-          />
+              text={
+                <div className="flex items-center space-x-1">
+                  <HiOutlineDocumentDuplicate className="text-white" />
+                  <span className="text-white">Update</span>
+                </div>
+              }
+            />
+          </div>
         </div>
       </div>
     </div>

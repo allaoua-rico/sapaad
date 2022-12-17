@@ -7,9 +7,9 @@ export default function WalkinListDialogs({ open, setOpen, addToArray }) {
   const handleClose = () => setOpen(null);
 
   const margheritasList = [
-    { name: "Margherita Large", price: "2.00" },
-    { name: "Margherita Medium", price: "2.00" },
-    { name: "Margherita XXL", price: "2.00" },
+    { name: "Margherita Large", price: 2 },
+    { name: "Margherita Medium", price: 2 },
+    { name: "Margherita XXL", price: 2 },
   ];
   return (
     <Dialog

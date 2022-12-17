@@ -20,12 +20,12 @@ const WalkinSearchSection = forwardRef((props, ref) => {
     listCopy[index].qty = newValue;
     setList(listCopy);
   };
+  // console.log(list)
   return (
     <div
       className="border border-gray-300
       flex flex-col flex-1 items-stretch
-    bg-mainBg
-    "
+    bg-mainBg"
     >
       <div
         className={"p-2 bg-gray-200 " + (step == 4 && disableBlur)}
@@ -139,9 +139,9 @@ function QtyModifier({ qty, changeQty }) {
        w-8 h-6 
        flex justify-center items-center my-auto
      text-gray-800 
-       rounded-l-lg 
-       "
-        onClick={() => {
+       rounded-l-lg"
+        onClick={(e) => {
+          e.stopPropagation();
           qty > 1 && changeQty(qty - 1);
         }}
       >
@@ -161,9 +161,11 @@ function QtyModifier({ qty, changeQty }) {
           w-8 h-6 
           flex justify-center items-center my-auto
         text-gray-800 
-          rounded-r-lg 
-          "
-        onClick={() => changeQty(qty + 1)}
+          rounded-r-lg"
+        onClick={(e) => {
+          e.stopPropagation();
+          changeQty(qty + 1);
+        }}
       >
         <FaPlus />
       </button>

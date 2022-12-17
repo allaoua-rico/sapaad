@@ -7,7 +7,7 @@ export default function MenuCategoriesPizzas({ addToArray }) {
   return (
     <div>
       <CategoryButton
-        onClick={() => addToArray({ name: "Chicken Pizza", price: "5.00" })}
+        onClick={() => addToArray({ name: "Chicken Pizza", price: 5 })}
         color="pink"
       >
         Chicken Pizza
@@ -16,7 +16,7 @@ export default function MenuCategoriesPizzas({ addToArray }) {
         Margherita Pizza
       </CategoryButton>
       <CategoryButton
-        onClick={() => addToArray({ name: "Veg Pizza", price: "5.00" })}
+        onClick={() => addToArray({ name: "Veg Pizza", price: 5 })}
         color="pink"
       >
         Veg Pizza

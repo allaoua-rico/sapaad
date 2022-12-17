@@ -14,7 +14,10 @@ export default function Walkin() {
   // Tutorial states
   const [activeDialogStep, setActiveDialogStep] = useState(1);
   const [dialogOpen, setDialogOpen] = useState(true);
-  const closeDialog = () => setDialogOpen(false);
+  const closeDialog = () => {
+    setDialogOpen(false);
+    setActiveDialogStep(8);
+  };
   const [anchorEl, setAnchorEl] = useState(null);
   const menuCategoriesRef = useRef();
   const searchSectionRef = useRef();
@@ -84,7 +87,7 @@ export default function Walkin() {
         bg-green-700 text-white font-medium 
           py-4 px-6
           rounded 
-        ` + (activeDialogStep == 7 && disableBlur)
+        ` + (activeDialogStep == 7 ? disableBlur : "")
           }
           ref={placeOrderRef}
         >
